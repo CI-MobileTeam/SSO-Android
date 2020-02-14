@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">library_third_party_sso_kotlin</string>
+    <string name="facebook_app_id">186438775778435</string>
+    <string name="fb_login_protocol_scheme">fb186438775778435</string>
 </resources>
