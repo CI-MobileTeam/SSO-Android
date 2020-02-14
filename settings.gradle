@@ -1,2 +1,2 @@
-include ':thirdpartyssojava', ':thirdpartyssokotlin'
+include ':third_party_sso_java', ':third_party_sso_kotlin', ':library_third_party_sso_java', ':library_third_party_sso_kotlin'
 rootProject.name='ThirdPartySSO'

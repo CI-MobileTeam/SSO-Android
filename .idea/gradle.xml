@@ -8,8 +8,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/thirdpartyssojava" />
-            <option value="$PROJECT_DIR$/thirdpartyssokotlin" />
+            <option value="$PROJECT_DIR$/library_third_party_sso_java" />
+            <option value="$PROJECT_DIR$/library_third_party_sso_kotlin" />
+            <option value="$PROJECT_DIR$/third_party_sso_java" />
+            <option value="$PROJECT_DIR$/third_party_sso_kotlin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
