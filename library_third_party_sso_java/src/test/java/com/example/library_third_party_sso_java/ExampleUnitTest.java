@@ -1,4 +1,4 @@
-package com.example.library_third_party_login;
+package com.example.library_third_party_sso_java;
 
 import org.junit.Test;
 

@@ -4,9 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.example.library_third_party_login.facebook.FacebookController;
+import com.example.library_third_party_sso_java.facebook.FacebookController;
 
 public class MainActivity extends AppCompatActivity {
 

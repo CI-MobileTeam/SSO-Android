@@ -1,10 +1,10 @@
-package com.example.library_third_party_login.facebook;
+package com.example.library_third_party_sso_java.facebook;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.library_third_party_login.Callback;
+import com.example.library_third_party_sso_java.Callback;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
