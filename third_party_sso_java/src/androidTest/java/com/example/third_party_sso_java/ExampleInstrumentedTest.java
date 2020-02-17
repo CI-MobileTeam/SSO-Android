@@ -1,4 +1,4 @@
-package com.example.thirdpartysso;
+package com.example.third_party_sso_java;
 
 import android.content.Context;
 
