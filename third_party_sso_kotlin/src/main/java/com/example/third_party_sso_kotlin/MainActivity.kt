@@ -1,4 +1,4 @@
-package com.example.thirdpartyssokotlin
+package com.example.third_party_sso_kotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

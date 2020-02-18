@@ -1,4 +1,4 @@
-package com.example.thirdpartyssokotlin
+package com.example.third_party_sso_kotlin
 
 import org.junit.Test
 
