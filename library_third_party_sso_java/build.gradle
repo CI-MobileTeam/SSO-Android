@@ -31,6 +31,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
 }
 
 
@@ -52,7 +53,7 @@ ext {
     // implementation 'com.mobileteam.cloudinteractive:sso-java:0.3.0'
     publishedGroupId = 'com.cloud-interactive.mobileteam'
     artifact = 'sso-java'
-    libraryVersion = '0.1.0'
+    libraryVersion = '0.1.1'
 
     // git information (just information)
     libraryDescription = 'third party sso library for mobile team'

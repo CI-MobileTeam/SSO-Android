@@ -1,10 +1,9 @@
-package com.example.library_third_party_sso_java.facebook;
+package com.example.library_third_party_sso_java;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.library_third_party_sso_java.Callback;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -19,13 +18,13 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
-public class FacebookLogin {
+ class FacebookLogin {
 
     private Activity mActivity;
     private FacebookData mFacebookData;
     private CallbackManager mCallbackManager;
 
-    private Callback mCallback;
+    private ThirdPartySSOCallback mThirdPartySSOCallback;
 
     public FacebookLogin(Activity activity) {
         mActivity = activity;
@@ -36,8 +35,8 @@ public class FacebookLogin {
         mCallbackManager = callbackManager;
     }
 
-    public void setCallback(Callback callback) {
-        mCallback = callback;
+    public void setThirdPartySSOCallback(ThirdPartySSOCallback thirdPartySSOCallback) {
+        mThirdPartySSOCallback = thirdPartySSOCallback;
     }
 
     public void facebookLogin() {
@@ -67,7 +66,8 @@ public class FacebookLogin {
                             mFacebookData.setUpdatedTime(object.optString("updated_time"));
                             mFacebookData.setVerified(object.optString("verified"));
                             mFacebookData.setEmail(object.optString("email"));
-                            mCallback.getFacebookData(mFacebookData);
+                            mThirdPartySSOCallback.getFacebookData(mFacebookData);
+
                         }
                     }
                 });
@@ -94,6 +94,7 @@ public class FacebookLogin {
     }
 
     public void facebookLogout() {
+
         // 會直接登出
         new GraphRequest(AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE, new GraphRequest.Callback() {
             @Override
@@ -105,7 +106,7 @@ public class FacebookLogin {
         }).executeAsync();
     }
 
-    public AccessToken getCurrentAccessToken() {
-        return AccessToken.getCurrentAccessToken();
+    public Boolean getCurrentAccessToken() {
+        return AccessToken.isCurrentAccessTokenActive();
     }
 }

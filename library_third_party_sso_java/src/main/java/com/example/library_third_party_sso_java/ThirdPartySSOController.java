@@ -1,4 +1,4 @@
-package com.example.library_third_party_sso_java.facebook;
+package com.example.library_third_party_sso_java;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,57 +9,90 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.library_third_party_sso_java.Callback;
 import com.facebook.CallbackManager;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * 　Created by Alan on 2017/8/3.
- */
+/****************************************************
+ * Copyright (C) Alan Corporation. All rights reserved.
+ *
+ * Author: AlanLai
+ * Create Date: 2020-02-17
+ * Usage:
+ *
+ * Revision History
+ * Date         Author           Description
+ ****************************************************/
 
-public class FacebookController {
-
-    private static FacebookController mFacebookController;
-    private FacebookLogin mFacebookLogin;
+public class ThirdPartySSOController {
+    private static ThirdPartySSOController mThirdPartySSOController;
     private Activity mActivity;
-    private CallbackManager mCallbackManager;
 
-    public static FacebookController newInstance(Activity activity) {
-        if (mFacebookController == null) {
-            mFacebookController = new FacebookController(activity);
-            mFacebookController.init();
+    //------------Google------------//
+    private GoogleLogin mGoogleLogin;
+    //------------Google------------//
+    //------------FB------------//
+    private FacebookLogin mFacebookLogin;
+    private CallbackManager mCallbackManager;
+    //------------FB------------//
+    //------------Line------------//
+    //------------Line------------//
+
+    public static ThirdPartySSOController newInstance(Activity activity) {
+        if (mThirdPartySSOController == null) {
+            mThirdPartySSOController = new ThirdPartySSOController(activity);
+            mThirdPartySSOController.init();
         }
-        return mFacebookController;
+        return mThirdPartySSOController;
     }
 
-    public FacebookController(Activity activity) {
+    public ThirdPartySSOController(Activity activity) {
         mActivity = activity;
+        //Google
+        mGoogleLogin = new GoogleLogin(mActivity);
+        //FB
         mFacebookLogin = new FacebookLogin(mActivity);
     }
 
-    public void init() {
+    private void init() {
+        //FB
         mCallbackManager = CallbackManager.Factory.create();
         mFacebookLogin.setCallbackManager(mCallbackManager);
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        mCallbackManager.onActivityResult(requestCode, resultCode, intent);
+    public void onStart(){
+        //Google
+        mGoogleLogin.onStart();
     }
 
-    public void onLogin(Callback callback) {
-        mFacebookLogin.setCallback(callback);
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        mCallbackManager.onActivityResult(requestCode, resultCode, intent);
+        mGoogleLogin.onActivityResult(requestCode, resultCode, intent);
+    }
+
+    //------------Google------------//
+    public void onGoogleLogin(ThirdPartySSOCallback thirdPartySSOCallback){
+        mGoogleLogin.setThirdPartySSOCallback(thirdPartySSOCallback);
+        mGoogleLogin.signIn();
+    }
+    //------------Google------------//
+
+
+    //------------FB------------//
+    public void onFBLogin(ThirdPartySSOCallback thirdPartySSOCallback) {
+        mFacebookLogin.setThirdPartySSOCallback(thirdPartySSOCallback);
         mFacebookLogin.facebookLogin();
     }
 
-    public void onLogout() {
+    public void onFBLogout() {
         mFacebookLogin.facebookLogout();
     }
 
-    public Boolean isLogin() {
-        return mFacebookLogin.getCurrentAccessToken() != null;
+    public Boolean isFBLogin() {
+        return mFacebookLogin.getCurrentAccessToken();
     }
+    //------------FB------------//
 
     public void getHashKey() {
         PackageInfo info;
@@ -81,5 +114,4 @@ public class FacebookController {
             Log.e("TAG", "exception" + e.toString());
         }
     }
-
 }
