@@ -50,17 +50,17 @@ ext {
 
     // the name you want to show in implementation
     // implementation 'com.mobileteam.cloudinteractive:sso-java:0.3.0'
-    publishedGroupId = 'com.mobileteam.cloudinteractive'
+    publishedGroupId = 'com.cloud-interactive.mobileteam'
     artifact = 'sso-java'
-    libraryVersion = '0.3.0'
+    libraryVersion = '0.1.0'
 
     // git information (just information)
     libraryDescription = 'third party sso library for mobile team'
     siteUrl = 'https://github.com/CI-MobileTeam/SSO-Android'
     gitUrl = 'https://github.com/CI-MobileTeam/SSO-Android.git'
-    developerId = 'CloudAlan'
-    developerName = 'Alan Lai'
-    developerEmail = 'alan.lai@cloud-interactive.com'
+    developerId = 'cloudinteractive'
+    developerName = 'cloud interactive'
+    developerEmail = 'developer@cloud-interactive.com'
 
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
