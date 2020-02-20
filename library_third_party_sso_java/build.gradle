@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -19,6 +18,8 @@ android {
 
         resValue ("string","facebook_app_id",properties.getProperty("facebook_app_id"))
         resValue ("string","fb_login_protocol_scheme",properties.getProperty("fb_login_protocol_scheme"))
+        resValue ("string","default_web_client_id",properties.getProperty("default_web_client_id"))
+        resValue ("string","line_channel_id",properties.getProperty("line_channel_id"))
     }
 
     buildTypes {
@@ -27,6 +28,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -39,10 +45,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
-    implementation 'com.google.firebase:firebase-analytics:17.2.2'
-    implementation 'com.google.firebase:firebase-core:17.2.2'
-    implementation 'com.google.firebase:firebase-auth:19.2.0'
-    implementation 'com.firebaseui:firebase-ui-auth:4.2.1'
+    implementation 'com.linecorp:linesdk:5.0.1'
 }
 
 

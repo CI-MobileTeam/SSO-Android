@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mGoogleButton = findViewById(R.id.google_login);
         mFaceBookButton = findViewById(R.id.fb_login);
         mLineButton = findViewById(R.id.line_login);
-        mLogOutButton = findViewById(R.id.logOut);
+        mLogOutButton = findViewById(R.id.log_out);
     }
 
     private void initListener() {
@@ -61,13 +61,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mThirdPartySSOController.onFaceBookLogin();
                 break;
             case R.id.line_login:
+                mThirdPartySSOController.onLineLogin();
                 break;
-            case R.id.logOut:
+            case R.id.log_out:
                 mThirdPartySSOController.onLogOut();
                 break;
         }
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -75,14 +75,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mThirdPartySSOController.onActivityResult(requestCode, resultCode, data);
     }
 
-
     @Override
     public void updateView(UserData userData) {
-        TextView textView = findViewById(R.id.text_view);
+        TextView idTextView = findViewById(R.id.id_text);
+        TextView tokenTextView = findViewById(R.id.token_text);
+        TextView emailTextView = findViewById(R.id.email_text);
         if(userData == null){
-            textView.setText("");
+            idTextView.setText("");
+            tokenTextView.setText("");
+            emailTextView.setText("");
             return;
         }
-        textView.setText(userData.getEmail());
+        idTextView.setText(userData.getId());
+
+        tokenTextView.setText(userData.getToken());
+
+        emailTextView.setText(userData.getEmail());
     }
 }

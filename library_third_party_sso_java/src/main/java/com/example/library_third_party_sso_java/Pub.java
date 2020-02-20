@@ -12,6 +12,7 @@ package com.example.library_third_party_sso_java;
  ****************************************************/
 
 public class Pub {
-    public static final int RC_SIGN_IN = 1122;
+    public static final int GOOGLE_RC_SIGN_IN = 1122;
+    public static final int LINE_REQUEST_CODE = 1123;
 
 }
