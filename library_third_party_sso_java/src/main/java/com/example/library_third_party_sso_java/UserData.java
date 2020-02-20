@@ -4,7 +4,7 @@ package com.example.library_third_party_sso_java;
  * 　Created by Alan on 2017/8/4.
  */
 
-public class FacebookData {
+public class UserData {
     private String mId = "";
     private String mCover = "";
     private String mName = "";

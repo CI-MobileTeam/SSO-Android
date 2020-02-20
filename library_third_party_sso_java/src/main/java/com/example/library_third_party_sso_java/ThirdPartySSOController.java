@@ -9,10 +9,33 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+
+import static com.example.library_third_party_sso_java.Pub.RC_SIGN_IN;
 
 /****************************************************
  * Copyright (C) Alan Corporation. All rights reserved.
@@ -28,71 +51,162 @@ import java.security.NoSuchAlgorithmException;
 public class ThirdPartySSOController {
     private static ThirdPartySSOController mThirdPartySSOController;
     private Activity mActivity;
+    private ThirdPartySSOCallback mThirdPartySSOCallback;
+    private FirebaseAuth mAuth;
 
     //------------Google------------//
-    private GoogleLogin mGoogleLogin;
+    private GoogleSignInOptions mGoogleSignInOptions;
+    private GoogleSignInClient mGoogleSignInClient;
     //------------Google------------//
     //------------FB------------//
-    private FacebookLogin mFacebookLogin;
     private CallbackManager mCallbackManager;
+    private UserData mUserData;
     //------------FB------------//
     //------------Line------------//
     //------------Line------------//
 
-    public static ThirdPartySSOController newInstance(Activity activity) {
+    public static ThirdPartySSOController newInstance(Activity activity, ThirdPartySSOCallback thirdPartySSOCallback) {
         if (mThirdPartySSOController == null) {
             mThirdPartySSOController = new ThirdPartySSOController(activity);
-            mThirdPartySSOController.init();
+            mThirdPartySSOController.init(thirdPartySSOCallback);
         }
         return mThirdPartySSOController;
     }
 
     public ThirdPartySSOController(Activity activity) {
         mActivity = activity;
-        //Google
-        mGoogleLogin = new GoogleLogin(mActivity);
-        //FB
-        mFacebookLogin = new FacebookLogin(mActivity);
-    }
+        mAuth = FirebaseAuth.getInstance();
+        //------------Google------------//
+        mGoogleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(activity.getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
 
-    private void init() {
-        //FB
+        mGoogleSignInClient = GoogleSignIn.getClient(mActivity, mGoogleSignInOptions);
+        //------------FB------------//
         mCallbackManager = CallbackManager.Factory.create();
-        mFacebookLogin.setCallbackManager(mCallbackManager);
     }
 
-    public void onStart(){
-        //Google
-        mGoogleLogin.onStart();
+    private void init(ThirdPartySSOCallback thirdPartySSOCallback) {
+        mThirdPartySSOCallback = thirdPartySSOCallback;
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        mCallbackManager.onActivityResult(requestCode, resultCode, intent);
-        mGoogleLogin.onActivityResult(requestCode, resultCode, intent);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // GoogleLogin Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                fireBaseAuthWithGoogle(account);
+            } catch (ApiException e) {
+                // GoogleLogin Sign In failed, update UI appropriately
+                Log.e("TAG", "GoogleLogin sign in failed", e);
+                // ...
+            }
+        }
+    }
+
+
+    private void fireBaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.e("TAG", "firebaseAuthWithGoogle:" + acct.getId());
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(mActivity, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.e("TAG", "signInWithCredential:success " );
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            UserData userData =new UserData();
+                            userData.setEmail(user.getEmail());
+
+                            mThirdPartySSOCallback.updateView(userData);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.e("TAG", "signInWithCredential:failure", task.getException());
+                            mThirdPartySSOCallback.updateView(null);
+                        }
+
+                        // ...
+                    }
+                });
+    }
+
+    private void handleFacebookAccessToken(AccessToken token) {
+        Log.e("TAG", "handleFacebookAccessToken:" + token.getToken());
+
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(mActivity, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.e("TAG", "signInWithCredential:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+
+                            Log.e("TAG", "FirebaseUser = "+user.getUid());
+                            Log.e("TAG", "FirebaseUser = "+user.getEmail());
+                            UserData userData =new UserData();
+                            userData.setEmail(user.getEmail());
+
+                            mThirdPartySSOCallback.updateView(userData);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.e("TAG", "signInWithCredential:failure", task.getException());
+
+                            mThirdPartySSOCallback.updateView(null);
+                        }
+
+                        // ...
+                    }
+                });
     }
 
     //------------Google------------//
-    public void onGoogleLogin(ThirdPartySSOCallback thirdPartySSOCallback){
-        mGoogleLogin.setThirdPartySSOCallback(thirdPartySSOCallback);
-        mGoogleLogin.signIn();
+    public void onGoogleLogin() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        mActivity.startActivityForResult(signInIntent, RC_SIGN_IN);
     }
     //------------Google------------//
-
-
     //------------FB------------//
-    public void onFBLogin(ThirdPartySSOCallback thirdPartySSOCallback) {
-        mFacebookLogin.setThirdPartySSOCallback(thirdPartySSOCallback);
-        mFacebookLogin.facebookLogin();
-    }
 
-    public void onFBLogout() {
-        mFacebookLogin.facebookLogout();
-    }
+    public void onFaceBookLogin() {
+        LoginManager.getInstance().logInWithReadPermissions(mActivity, Arrays.asList("public_profile", "user_friends", "email", "user_birthday"));
+        LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.e("TAG","onFaceBookLogin onSuccess");
 
-    public Boolean isFBLogin() {
-        return mFacebookLogin.getCurrentAccessToken();
+                handleFacebookAccessToken(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+                Log.e("TAG","onFaceBookLogin onCancel");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.e("TAG","onFaceBookLogin onError");
+            }
+        });
     }
     //------------FB------------//
+    //------------Line------------//
+    //------------Line------------//
+
+    public void onLogOut(){
+        FirebaseAuth.getInstance().signOut();
+        mGoogleSignInClient.signOut();
+        LoginManager.getInstance().logOut();
+        mThirdPartySSOCallback.updateView(null);
+    }
+
 
     public void getHashKey() {
         PackageInfo info;

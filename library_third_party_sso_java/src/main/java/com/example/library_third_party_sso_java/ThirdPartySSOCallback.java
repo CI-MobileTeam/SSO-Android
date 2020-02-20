@@ -7,7 +7,6 @@ package com.example.library_third_party_sso_java;
 
 public interface ThirdPartySSOCallback {
 
-    void getFacebookData(FacebookData facebookData);
+    void updateView(UserData userData);
 
-    void updateGoogleUI(GoogleData googleData);
 }
