@@ -111,33 +111,31 @@ public class ThirdPartySSOController {
         }
 
         //Line
-        if (requestCode != LINE_REQUEST_CODE) {
-            Log.e("ERROR", "Unsupported Request");
-            return;
-        }
-        LineLoginResult result = LineLoginApi.getLoginResultFromIntent(data);
-        switch (result.getResponseCode()) {
+        if (requestCode == LINE_REQUEST_CODE) {
+            LineLoginResult result = LineLoginApi.getLoginResultFromIntent(data);
+            switch (result.getResponseCode()) {
 
-            case SUCCESS:
-                // Login successful
-                String accessToken = result.getLineCredential().getAccessToken().getTokenString();
+                case SUCCESS:
+                    // Login successful
+                    String accessToken = result.getLineCredential().getAccessToken().getTokenString();
 
-                mUserData = new UserData();
-                mUserData.setToken(accessToken);
-                mUserData.setId(result.getLineProfile().getUserId());
+                    mUserData = new UserData();
+                    mUserData.setToken(accessToken);
+                    mUserData.setId(result.getLineProfile().getUserId());
 
-                mThirdPartySSOCallback.updateView(mUserData);
-                break;
+                    mThirdPartySSOCallback.updateView(mUserData);
+                    break;
 
-            case CANCEL:
-                // Login canceled by user
-                Log.e("ERROR", "LINE Login Canceled by user.");
-                break;
+                case CANCEL:
+                    // Login canceled by user
+                    Log.e("ERROR", "LINE Login Canceled by user.");
+                    break;
 
-            default:
-                // Login canceled due to other error
-                Log.e("ERROR", "Login FAILED!");
-                Log.e("ERROR", result.getErrorData().toString());
+                default:
+                    // Login canceled due to other error
+                    Log.e("ERROR", "Login FAILED!");
+                    Log.e("ERROR", result.getErrorData().toString());
+            }
         }
     }
 
