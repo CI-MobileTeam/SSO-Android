@@ -1,47 +1,230 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.thirdpartyssokotlin"
+3    package="com.cloudinteractive.sso"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml
+8-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="29" />
-9-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml
+9-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml
 10
-11    <application
-11-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:5:5-19:19
-12        android:allowBackup="true"
-12-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:6:9-35
-13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.2.0] /Users/alan/.gradle/caches/transforms-2/files-2.1/61e20914109ec526091e4c10c9a26064/core-1.2.0/AndroidManifest.xml:24:18-86
-14        android:debuggable="true"
-15        android:icon="@mipmap/ic_launcher"
-15-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:7:9-43
-16        android:label="@string/app_name"
-16-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:8:9-41
-17        android:roundIcon="@mipmap/ic_launcher_round"
-17-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:9:9-54
-18        android:supportsRtl="true"
-18-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:10:9-35
-19        android:testOnly="true"
-20        android:theme="@style/AppTheme" >
-20-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:11:9-40
-21        <activity android:name="com.example.thirdpartyssokotlin.MainActivity" >
-21-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:12:9-18:20
-21-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:12:19-47
-22            <intent-filter>
-22-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:13:13-17:29
-23                <action android:name="android.intent.action.MAIN" />
-23-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:14:17-69
-23-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:14:25-66
-24
-25                <category android:name="android.intent.category.LAUNCHER" />
-25-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:16:17-77
-25-->/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/src/main/AndroidManifest.xml:16:27-74
-26            </intent-filter>
-27        </activity>
-28    </application>
-29
-30</manifest>
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:5:5-66
+11-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+12-->[com.android.installreferrer:installreferrer:1.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/97f35539258d6cda356b3755c012fbf9/jetified-installreferrer-1.0/AndroidManifest.xml:9:5-110
+12-->[com.android.installreferrer:installreferrer:1.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/97f35539258d6cda356b3755c012fbf9/jetified-installreferrer-1.0/AndroidManifest.xml:9:22-107
+13
+14    <application
+14-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:7:5-25:19
+15        android:allowBackup="true"
+15-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:8:9-35
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.2.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/27e3f06487220df8a877a55d7ef66f2c/core-1.2.0/AndroidManifest.xml:24:18-86
+17        android:debuggable="true"
+18        android:icon="@mipmap/ic_launcher"
+18-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:9:9-43
+19        android:label="@string/app_name"
+19-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:10:9-41
+20        android:roundIcon="@mipmap/ic_launcher_round"
+20-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:11:9-54
+21        android:supportsRtl="true"
+21-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:12:9-35
+22        android:testOnly="true"
+23        android:theme="@style/AppTheme" >
+23-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:13:9-40
+24        <activity android:name="com.example.third_party_sso_kotlin.MainActivity" >
+24-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:15:9-21:20
+24-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:15:19-81
+25            <intent-filter>
+25-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:16:13-20:29
+26                <action android:name="android.intent.action.MAIN" />
+26-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:17:17-69
+26-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:17:25-66
+27
+28                <category android:name="android.intent.category.LAUNCHER" />
+28-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:19:17-77
+28-->/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/src/main/AndroidManifest.xml:19:27-74
+29            </intent-filter>
+30        </activity>
+31
+32        <meta-data
+32-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:9-17:55
+33            android:name="com.facebook.sdk.ApplicationId"
+33-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-58
+34            android:value="@string/facebook_app_id" />
+34-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-52
+35
+36        <activity
+36-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-22:48
+37            android:name="com.facebook.FacebookActivity"
+37-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-57
+38            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+38-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:21:13-96
+39            android:label="@string/app_name"
+39-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:22:13-45
+40            android:theme="@style/com_facebook_activity_theme" />
+40-->[com.facebook.android:facebook-common:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/62fcafb9103b67fa53adde54a05153b1/jetified-facebook-common-5.15.3/AndroidManifest.xml:33:13-63
+41        <activity
+41-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:23:9-34:20
+42            android:name="com.facebook.CustomTabActivity"
+42-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:13-58
+43            android:exported="true" >
+43-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-36
+44            <intent-filter>
+44-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-33:29
+45                <action android:name="android.intent.action.VIEW" />
+45-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:17-69
+45-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:25-66
+46
+47                <category android:name="android.intent.category.DEFAULT" />
+47-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:17-76
+47-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:27-73
+48                <category android:name="android.intent.category.BROWSABLE" />
+48-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:17-78
+48-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:27-75
+49
+50                <data android:scheme="@string/fb_login_protocol_scheme" />
+50-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:17-75
+50-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:23-72
+51            </intent-filter>
+52            <intent-filter>
+52-->[com.facebook.android:facebook-common:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/62fcafb9103b67fa53adde54a05153b1/jetified-facebook-common-5.15.3/AndroidManifest.xml:39:13-48:29
+53                <action android:name="android.intent.action.VIEW" />
+53-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:17-69
+53-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:25-66
+54
+55                <category android:name="android.intent.category.DEFAULT" />
+55-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:17-76
+55-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:27-73
+56                <category android:name="android.intent.category.BROWSABLE" />
+56-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:17-78
+56-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:27-75
+57
+58                <data
+58-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:17-75
+59                    android:host="cct.com.cloudinteractive.sso"
+60                    android:scheme="fbconnect" />
+60-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:23-72
+61            </intent-filter>
+62        </activity>
+63        <!--
+64         "launchMode" of this activity must not be singleInstance and singleTask because, this is
+65         launched with using startActivityForResult().
+66         This activity must be stacked on same Activity Stack of the caller.
+67        -->
+68        <activity
+68-->[com.linecorp:linesdk:5.0.1] /Users/lin/.gradle/caches/transforms-2/files-2.1/e08932d9a193eaba0cd1f48988149e61/jetified-linesdk-5.0.1/AndroidManifest.xml:20:9-25:69
+69            android:name="com.linecorp.linesdk.auth.internal.LineAuthenticationActivity"
+69-->[com.linecorp:linesdk:5.0.1] /Users/lin/.gradle/caches/transforms-2/files-2.1/e08932d9a193eaba0cd1f48988149e61/jetified-linesdk-5.0.1/AndroidManifest.xml:21:13-89
+70            android:configChanges="orientation|screenSize|keyboardHidden"
+70-->[com.linecorp:linesdk:5.0.1] /Users/lin/.gradle/caches/transforms-2/files-2.1/e08932d9a193eaba0cd1f48988149e61/jetified-linesdk-5.0.1/AndroidManifest.xml:22:13-74
+71            android:exported="false"
+71-->[com.linecorp:linesdk:5.0.1] /Users/lin/.gradle/caches/transforms-2/files-2.1/e08932d9a193eaba0cd1f48988149e61/jetified-linesdk-5.0.1/AndroidManifest.xml:23:13-37
+72            android:launchMode="singleTop"
+72-->[com.linecorp:linesdk:5.0.1] /Users/lin/.gradle/caches/transforms-2/files-2.1/e08932d9a193eaba0cd1f48988149e61/jetified-linesdk-5.0.1/AndroidManifest.xml:24:13-43
+73            android:theme="@style/LineSdk_AuthenticationActivity" />
+73-->[com.linecorp:linesdk:5.0.1] /Users/lin/.gradle/caches/transforms-2/files-2.1/e08932d9a193eaba0cd1f48988149e61/jetified-linesdk-5.0.1/AndroidManifest.xml:25:13-66
+74        <activity
+74-->[com.linecorp:linesdk:5.0.1] /Users/lin/.gradle/caches/transforms-2/files-2.1/e08932d9a193eaba0cd1f48988149e61/jetified-linesdk-5.0.1/AndroidManifest.xml:26:9-38:20
+75            android:name="com.linecorp.linesdk.auth.internal.LineAuthenticationCallbackActivity"
+75-->[com.linecorp:linesdk:5.0.1] /Users/lin/.gradle/caches/transforms-2/files-2.1/e08932d9a193eaba0cd1f48988149e61/jetified-linesdk-5.0.1/AndroidManifest.xml:27:13-97
+76            android:configChanges="orientation|screenSize|keyboardHidden"
+76-->[com.linecorp:linesdk:5.0.1] /Users/lin/.gradle/caches/transforms-2/files-2.1/e08932d9a193eaba0cd1f48988149e61/jetified-linesdk-5.0.1/AndroidManifest.xml:28:13-74
+77            android:exported="true" >
+77-->[com.linecorp:linesdk:5.0.1] /Users/lin/.gradle/caches/transforms-2/files-2.1/e08932d9a193eaba0cd1f48988149e61/jetified-linesdk-5.0.1/AndroidManifest.xml:29:13-36
+78            <intent-filter>
+78-->[com.linecorp:linesdk:5.0.1] /Users/lin/.gradle/caches/transforms-2/files-2.1/e08932d9a193eaba0cd1f48988149e61/jetified-linesdk-5.0.1/AndroidManifest.xml:30:13-37:29
+79                <action android:name="android.intent.action.VIEW" />
+79-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:17-69
+79-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:25-66
+80
+81                <category android:name="android.intent.category.DEFAULT" />
+81-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:17-76
+81-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:27-73
+82                <category android:name="android.intent.category.BROWSABLE" />
+82-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:17-78
+82-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:27-75
+83
+84                <data android:scheme="lineauth" />
+84-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:17-75
+84-->[:library_third_party_sso_kotlin] /Users/lin/Desktop/AndroidProject/SSO-Android/library_third_party_sso_kotlin/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:23-72
+85            </intent-filter>
+86        </activity>
+87        <activity android:name="com.facebook.CustomTabMainActivity" />
+87-->[com.facebook.android:facebook-common:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/62fcafb9103b67fa53adde54a05153b1/jetified-facebook-common-5.15.3/AndroidManifest.xml:34:9-71
+87-->[com.facebook.android:facebook-common:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/62fcafb9103b67fa53adde54a05153b1/jetified-facebook-common-5.15.3/AndroidManifest.xml:34:19-68
+88        <activity
+88-->[com.google.android.gms:play-services-auth:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/140d72f32575bf286b8acb90a8e36e31/play-services-auth-17.0.0/AndroidManifest.xml:23:9-27:75
+89            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+89-->[com.google.android.gms:play-services-auth:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/140d72f32575bf286b8acb90a8e36e31/play-services-auth-17.0.0/AndroidManifest.xml:24:13-93
+90            android:excludeFromRecents="true"
+90-->[com.google.android.gms:play-services-auth:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/140d72f32575bf286b8acb90a8e36e31/play-services-auth-17.0.0/AndroidManifest.xml:25:13-46
+91            android:exported="false"
+91-->[com.google.android.gms:play-services-auth:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/140d72f32575bf286b8acb90a8e36e31/play-services-auth-17.0.0/AndroidManifest.xml:26:13-37
+92            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+92-->[com.google.android.gms:play-services-auth:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/140d72f32575bf286b8acb90a8e36e31/play-services-auth-17.0.0/AndroidManifest.xml:27:13-72
+93        <!--
+94            Service handling Google Sign-In user revocation. For apps that do not integrate with
+95            Google Sign-In, this service will never be started.
+96        -->
+97        <service
+97-->[com.google.android.gms:play-services-auth:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/140d72f32575bf286b8acb90a8e36e31/play-services-auth-17.0.0/AndroidManifest.xml:33:9-36:110
+98            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+98-->[com.google.android.gms:play-services-auth:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/140d72f32575bf286b8acb90a8e36e31/play-services-auth-17.0.0/AndroidManifest.xml:34:13-89
+99            android:exported="true"
+99-->[com.google.android.gms:play-services-auth:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/140d72f32575bf286b8acb90a8e36e31/play-services-auth-17.0.0/AndroidManifest.xml:35:13-36
+100            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+100-->[com.google.android.gms:play-services-auth:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/140d72f32575bf286b8acb90a8e36e31/play-services-auth-17.0.0/AndroidManifest.xml:36:13-107
+101
+102        <activity
+102-->[com.google.android.gms:play-services-base:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/150c8848b548b2f0d50f028caa743a08/play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
+103            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+103-->[com.google.android.gms:play-services-base:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/150c8848b548b2f0d50f028caa743a08/play-services-base-17.0.0/AndroidManifest.xml:24:13-79
+104            android:exported="false"
+104-->[com.google.android.gms:play-services-base:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/150c8848b548b2f0d50f028caa743a08/play-services-base-17.0.0/AndroidManifest.xml:25:13-37
+105            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+105-->[com.google.android.gms:play-services-base:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/150c8848b548b2f0d50f028caa743a08/play-services-base-17.0.0/AndroidManifest.xml:26:13-72
+106
+107        <meta-data
+107-->[com.google.android.gms:play-services-basement:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/fa1204a61047c35abe3e074ddbac16e7/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+108            android:name="com.google.android.gms.version"
+108-->[com.google.android.gms:play-services-basement:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/fa1204a61047c35abe3e074ddbac16e7/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+109            android:value="@integer/google_play_services_version" />
+109-->[com.google.android.gms:play-services-basement:17.0.0] /Users/lin/.gradle/caches/transforms-2/files-2.1/fa1204a61047c35abe3e074ddbac16e7/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+110        <!--
+111         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
+112         with the application context. This config is merged in with the host app's manifest,
+113         but there can only be one provider with the same authority activated at any given
+114         point; so if the end user has two or more different apps that use Facebook SDK, only the
+115         first one will be able to use the provider. To work around this problem, we use the
+116         following placeholder in the authority to identify each host application as if it was
+117         a completely different provider.
+118        -->
+119        <provider
+119-->[com.facebook.android:facebook-core:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/72dde47b4ea9d1ff3358a6036ab4e960/jetified-facebook-core-5.15.3/AndroidManifest.xml:39:9-42:40
+120            android:name="com.facebook.internal.FacebookInitProvider"
+120-->[com.facebook.android:facebook-core:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/72dde47b4ea9d1ff3358a6036ab4e960/jetified-facebook-core-5.15.3/AndroidManifest.xml:40:13-70
+121            android:authorities="com.cloudinteractive.sso.FacebookInitProvider"
+121-->[com.facebook.android:facebook-core:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/72dde47b4ea9d1ff3358a6036ab4e960/jetified-facebook-core-5.15.3/AndroidManifest.xml:41:13-72
+122            android:exported="false" />
+122-->[com.facebook.android:facebook-core:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/72dde47b4ea9d1ff3358a6036ab4e960/jetified-facebook-core-5.15.3/AndroidManifest.xml:42:13-37
+123
+124        <receiver
+124-->[com.facebook.android:facebook-core:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/72dde47b4ea9d1ff3358a6036ab4e960/jetified-facebook-core-5.15.3/AndroidManifest.xml:44:9-50:20
+125            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
+125-->[com.facebook.android:facebook-core:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/72dde47b4ea9d1ff3358a6036ab4e960/jetified-facebook-core-5.15.3/AndroidManifest.xml:45:13-86
+126            android:exported="false" >
+126-->[com.facebook.android:facebook-core:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/72dde47b4ea9d1ff3358a6036ab4e960/jetified-facebook-core-5.15.3/AndroidManifest.xml:46:13-37
+127            <intent-filter>
+127-->[com.facebook.android:facebook-core:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/72dde47b4ea9d1ff3358a6036ab4e960/jetified-facebook-core-5.15.3/AndroidManifest.xml:47:13-49:29
+128                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
+128-->[com.facebook.android:facebook-core:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/72dde47b4ea9d1ff3358a6036ab4e960/jetified-facebook-core-5.15.3/AndroidManifest.xml:48:17-95
+128-->[com.facebook.android:facebook-core:5.15.3] /Users/lin/.gradle/caches/transforms-2/files-2.1/72dde47b4ea9d1ff3358a6036ab4e960/jetified-facebook-core-5.15.3/AndroidManifest.xml:48:25-92
+129            </intent-filter>
+130        </receiver>
+131    </application>
+132
+133</manifest>
