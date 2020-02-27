@@ -1,7 +1,10 @@
-#Fri Feb 14 12:16:24 CST 2020
-base.0=/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex
+#Wed Feb 26 18:22:34 CST 2020
+path.2=classes_0.dex
 path.1=classes.dex
-renamed.1=classes2.dex
 path.0=classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
-base.1=/Users/alan/AndroidProject/ThirdPartySSO /third_party_sso_kotlin/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex
+base.2=/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/build/intermediates/dex/debug/mergeLibDexDebug/out/classes_0.dex
+base.1=/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex
+base.0=/Users/lin/Desktop/AndroidProject/SSO-Android/third_party_sso_kotlin/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex
