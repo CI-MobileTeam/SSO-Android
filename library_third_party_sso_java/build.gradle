@@ -4,6 +4,8 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream()) // load local.properties
 
     defaultConfig {
         minSdkVersion 21
@@ -13,13 +15,24 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
+        resValue ("string","facebook_app_id",properties.getProperty("facebook_app_id"))
+        resValue ("string","fb_login_protocol_scheme",properties.getProperty("fb_login_protocol_scheme"))
+        resValue ("string","default_web_client_id",properties.getProperty("default_web_client_id"))
+        resValue ("string","line_channel_id",properties.getProperty("line_channel_id"))
     }
 
     buildTypes {
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -32,6 +45,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    implementation 'com.linecorp:linesdk:5.0.1'
 }
 
 
@@ -53,7 +67,7 @@ ext {
     // implementation 'com.mobileteam.cloudinteractive:sso-java:0.3.0'
     publishedGroupId = 'com.cloud-interactive.mobileteam'
     artifact = 'sso-java'
-    libraryVersion = '0.1.1'
+    libraryVersion = '0.1.2'
 
     // git information (just information)
     libraryDescription = 'third party sso library for mobile team'
