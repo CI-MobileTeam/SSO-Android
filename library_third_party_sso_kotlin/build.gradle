@@ -49,3 +49,42 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.linecorp:linesdk:5.0.1'
 }
+
+apply plugin: 'com.github.dcendents.android-maven' // apply maven plugin
+apply plugin: 'com.jfrog.bintray' // apply bintray plugin
+
+ext {
+    // the repository name of Bintray
+    bintrayRepo = "ThirdPartyLogin"
+    // the package name of Bintray (suggest to set the same with module package)
+    bintrayName = "com.example.library_third_party_login"
+
+    // the module name of Android Studio
+    libraryName = 'library_third_party_sso_kotlin'
+
+    // the name you want to show in implementation
+    // implementation 'com.mobileteam.cloudinteractive:sso-kotlin:1.0.0'
+    publishedGroupId = 'com.cloud-interactive.mobileteam'
+    artifact = 'sso-kotlin'
+    libraryVersion = '1.0.0'
+
+    // git information (just information)
+    libraryDescription = 'third party sso library for android'
+    siteUrl = 'https://github.com/lin8019/ThirdPartyLogin'
+    gitUrl = 'https://github.com/lin8019/ThirdPartyLogin.git'
+    developerId = 'lin8019'
+    developerName = 'lin huang'
+    developerEmail = 'd9883356@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+//Add these lines to publish library to bintray. This is the readymade scripts made by github user nuuneoi to make uploading to bintray easy.
+//Place it at the end of the file
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/wajahatkarim3/JCenter-Gradle-Scripts/master/install.gradle'
+    apply from: 'https://raw.githubusercontent.com/wajahatkarim3/JCenter-Gradle-Scripts/master/bintray.gradle'
+}
+
