@@ -152,6 +152,7 @@ public class ThirdPartySSOController {
         LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                Log.e("TAG","onFaceBookLogin onSuccess");
 
                 mUserData = new UserData();
                 mUserData.setToken(loginResult.getAccessToken().getToken());

@@ -56,7 +56,7 @@ apply plugin: 'com.jfrog.bintray'
 ext {
 
     // the repository name of Bintray
-    bintrayRepo = "library"
+    bintrayRepo = "ThirdPartyLogin"
     // the package name of Bintray (suggest to set the same with module package)
     bintrayName = "com.example.library_third_party_sso_java"
 
@@ -67,7 +67,7 @@ ext {
     // implementation 'com.mobileteam.cloudinteractive:sso-java:0.3.0'
     publishedGroupId = 'com.cloud-interactive.mobileteam'
     artifact = 'sso-java'
-    libraryVersion = '0.1.2'
+    libraryVersion = '0.1.1'
 
     // git information (just information)
     libraryDescription = 'third party sso library for mobile team'
