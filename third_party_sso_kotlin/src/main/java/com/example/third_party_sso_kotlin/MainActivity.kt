@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() , View.OnClickListener , LoginResultCallback{
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.e("test", "onCreate: $isTaskRoot")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 

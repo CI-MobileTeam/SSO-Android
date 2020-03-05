@@ -1,7 +1,14 @@
 package com.example.library_third_party_sso_kotlin
 
 import android.content.Intent
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
+import android.util.Base64
+import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 enum class LOGINTYPE {
     FACEBOOK,
@@ -41,6 +48,25 @@ class ThirdPartyLoginManager : IThirdPartyLogin {
     companion object {
         val INSTANCE: ThirdPartyLoginManager by lazy {
             ThirdPartyLoginManager()
+        }
+
+        fun getHashKey(activity: FragmentActivity): String? {
+            try {
+                val info = activity.packageManager.getPackageInfo(activity.packageName, PackageManager.GET_SIGNATURES)
+                for (signature in info.signatures) {
+                    val md = MessageDigest.getInstance("SHA")
+                    md.update(signature.toByteArray())
+                    val keyResult = String(Base64.encode(md.digest(), 0))
+                    Log.e("TAG", "hash key = ${keyResult}")
+                    Toast.makeText(activity, "My FB Key is \n ${keyResult}" , Toast.LENGTH_LONG).show()
+                    return keyResult
+                }
+            } catch (e: Exception) {
+                Log.e("TAG", "exception: $e")
+                return e.message
+            }
+
+            return null
         }
     }
 }

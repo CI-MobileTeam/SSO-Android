@@ -70,11 +70,11 @@ ext {
 
     // git information (just information)
     libraryDescription = 'third party sso library for android'
-    siteUrl = 'https://github.com/lin8019/ThirdPartyLogin'
-    gitUrl = 'https://github.com/lin8019/ThirdPartyLogin.git'
-    developerId = 'lin8019'
-    developerName = 'lin huang'
-    developerEmail = 'd9883356@gmail.com'
+    siteUrl = 'https://github.com/CI-MobileTeam/SSO-Android'
+    gitUrl = 'https://github.com/CI-MobileTeam/SSO-Android.git'
+    developerId = 'cloudinteractive'
+    developerName = 'cloud interactive'
+    developerEmail = 'developer@cloud-interactive.com'
 
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
