@@ -76,13 +76,18 @@ public class ThirdPartySSOController {
         mActivity = activity;
         //------------Google------------//
         mGoogleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(activity.getString(R.string.default_web_client_id))
+                .requestIdToken(activity.getString(R.string.google_login_client_id))
                 .requestEmail()
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(mActivity, mGoogleSignInOptions);
         //------------FB------------//
         mCallbackManager = CallbackManager.Factory.create();
+
+
+        Log.e("TAG", "facebook_app_id = " + mActivity.getString(R.string.facebook_app_id));
+        Log.e("TAG", "google_login_client_id = " + mActivity.getString(R.string.google_login_client_id));
+        Log.e("TAG", "line_channel_id = " + mActivity.getString(R.string.line_channel_id));
     }
 
     private void init(ThirdPartySSOCallback thirdPartySSOCallback) {
@@ -152,7 +157,7 @@ public class ThirdPartySSOController {
         LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.e("TAG","onFaceBookLogin onSuccess");
+                Log.e("TAG", "onFaceBookLogin onSuccess");
 
                 mUserData = new UserData();
                 mUserData.setToken(loginResult.getAccessToken().getToken());
