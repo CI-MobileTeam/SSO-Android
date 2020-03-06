@@ -18,7 +18,7 @@ android {
 
         resValue ("string","facebook_app_id",properties.getProperty("facebook_app_id"))
         resValue ("string","fb_login_protocol_scheme",properties.getProperty("fb_login_protocol_scheme"))
-        resValue ("string","default_web_client_id",properties.getProperty("default_web_client_id"))
+        resValue ("string","google_login_client_id",properties.getProperty("google_login_client_id"))
         resValue ("string","line_channel_id",properties.getProperty("line_channel_id"))
     }
 
@@ -67,7 +67,7 @@ ext {
     // implementation 'com.mobileteam.cloudinteractive:sso-java:0.3.0'
     publishedGroupId = 'com.cloud-interactive.mobileteam'
     artifact = 'sso-java'
-    libraryVersion = '0.1.1'
+    libraryVersion = '0.1.4'
 
     // git information (just information)
     libraryDescription = 'third party sso library for mobile team'
