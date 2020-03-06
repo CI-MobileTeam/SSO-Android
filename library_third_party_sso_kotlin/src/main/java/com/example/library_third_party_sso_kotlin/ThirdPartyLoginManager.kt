@@ -57,12 +57,11 @@ class ThirdPartyLoginManager : IThirdPartyLogin {
                     val md = MessageDigest.getInstance("SHA")
                     md.update(signature.toByteArray())
                     val keyResult = String(Base64.encode(md.digest(), 0))
-                    Log.e("TAG", "hash key = ${keyResult}")
-                    Toast.makeText(activity, "My FB Key is \n ${keyResult}" , Toast.LENGTH_LONG).show()
+                    Log.e("ThirdPartyLoginManager", "hash key = ${keyResult}")
                     return keyResult
                 }
             } catch (e: Exception) {
-                Log.e("TAG", "exception: $e")
+                Log.e("ThirdPartyLoginManager", "exception: $e")
                 return e.message
             }
 

@@ -18,10 +18,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
 
-        resValue("string", "facebook_app_id", properties.getProperty("facebook_app_id",""))
-        resValue("string", "fb_login_protocol_scheme", properties.getProperty("fb_login_protocol_scheme",""))
-        resValue("string", "google_login_client_id", properties.getProperty("google_login_client_id",""))
-        resValue("string", "line_channel_id", properties.getProperty("line_channel_id",""))
+        resValue("string", "facebook_app_id", properties.getProperty("facebook_app_id"))
+        resValue("string", "fb_login_protocol_scheme", properties.getProperty("fb_login_protocol_scheme"))
+        resValue("string", "google_login_client_id", properties.getProperty("google_login_client_id"))
+        resValue("string", "line_channel_id", properties.getProperty("line_channel_id"))
     }
 
     buildTypes {
@@ -66,7 +66,7 @@ ext {
     // implementation 'com.mobileteam.cloudinteractive:sso-kotlin:1.0.0'
     publishedGroupId = 'com.cloud-interactive.mobileteam'
     artifact = 'sso-kotlin'
-    libraryVersion = '1.0.0'
+    libraryVersion = '1.0.1'
 
     // git information (just information)
     libraryDescription = 'third party sso library for android'
