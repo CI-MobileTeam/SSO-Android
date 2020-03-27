@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/library_third_party_sso_fb_java" />
+            <option value="$PROJECT_DIR$/library_third_party_sso_google_java" />
             <option value="$PROJECT_DIR$/library_third_party_sso_java" />
             <option value="$PROJECT_DIR$/library_third_party_sso_kotlin" />
+            <option value="$PROJECT_DIR$/library_third_party_sso_line_java" />
             <option value="$PROJECT_DIR$/third_party_sso_java" />
             <option value="$PROJECT_DIR$/third_party_sso_kotlin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
-        <option name="testRunner" value="PLATFORM" />
       </GradleProjectSettings>
     </option>
   </component>
