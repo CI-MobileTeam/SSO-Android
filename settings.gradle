@@ -1,2 +1,5 @@
 include ':third_party_sso_java', ':third_party_sso_kotlin', ':library_third_party_sso_java', ':library_third_party_sso_kotlin'
 rootProject.name='ThirdPartySSO'
+include ':library_third_party_sso_google_java'
+include ':library_third_party_sso_line_java'
+include ':library_third_party_sso_fb_java'
