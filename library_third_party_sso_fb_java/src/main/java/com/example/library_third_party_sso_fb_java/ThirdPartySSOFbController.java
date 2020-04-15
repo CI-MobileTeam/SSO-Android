@@ -102,12 +102,14 @@ public class ThirdPartySSOFbController {
 
             @Override
             public void onCancel() {
-
+                Log.e("TAG", "onFaceBookLogin onCancel");
+                Toast.makeText(mActivity, "onFaceBookLogin onCancel", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException error) {
-
+                Log.e("TAG", "onFaceBookLogin onError failed = " + error.getMessage());
+                Toast.makeText(mActivity, "onFaceBookLogin onError", Toast.LENGTH_SHORT).show();
             }
         });
     }

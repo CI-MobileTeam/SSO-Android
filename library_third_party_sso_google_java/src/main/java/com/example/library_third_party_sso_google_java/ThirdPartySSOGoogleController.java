@@ -81,8 +81,9 @@ public class ThirdPartySSOGoogleController {
 
             } catch (ApiException e) {
                 // GoogleLogin Sign In failed, update UI appropriately
-                Log.e("TAG", "GoogleLogin sign in failed", e);
+                Log.e("TAG", "GoogleLogin sign in failed = "+e.getMessage());
                 // ...
+                Toast.makeText(mActivity, "GoogleLogin sign in failed", Toast.LENGTH_SHORT).show();
             }
         }
     }

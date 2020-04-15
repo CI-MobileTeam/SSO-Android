@@ -78,12 +78,14 @@ public class ThirdPartySSOLineController {
                 case CANCEL:
                     // Login canceled by user
                     Log.e("ERROR", "LINE Login Canceled by user.");
+                    Toast.makeText(mActivity, "Line sign in CANCEL", Toast.LENGTH_SHORT).show();
                     break;
 
                 default:
                     // Login canceled due to other error
                     Log.e("ERROR", "Login FAILED!");
                     Log.e("ERROR", result.getErrorData().toString());
+                    Toast.makeText(mActivity, "Line sign in failed", Toast.LENGTH_SHORT).show();
             }
         }
     }
