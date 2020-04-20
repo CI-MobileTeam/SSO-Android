@@ -4,17 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.library_third_party_sso_google_java.GoogleUserData;
+import com.example.library_third_party_sso_google_java.ThirdPartySSOGoogleCallback;
+import com.example.library_third_party_sso_google_java.ThirdPartySSOGoogleController;
 import com.example.library_third_party_sso_java.ThirdPartySSOCallback;
 import com.example.library_third_party_sso_java.ThirdPartySSOController;
 import com.example.library_third_party_sso_java.UserData;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, ThirdPartySSOCallback {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ThirdPartySSOCallback , ThirdPartySSOGoogleCallback {
 
     private ThirdPartySSOController mThirdPartySSOController;
+    private ThirdPartySSOGoogleController mThirdPartySSOGoogleController;
     private Button mGoogleButton;
     private Button mFaceBookButton;
     private Button mLineButton;
@@ -26,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mThirdPartySSOController = ThirdPartySSOController.newInstance(this, this);
+        mThirdPartySSOGoogleController = ThirdPartySSOGoogleController.newInstance(this, this);
         mThirdPartySSOController.getHashKey();
         initView();
         initListener();
@@ -56,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.google_login:
-                mThirdPartySSOController.onGoogleLogin();
+                mThirdPartySSOGoogleController.onGoogleLogin();
                 break;
             case R.id.fb_login:
                 mThirdPartySSOController.onFaceBookLogin();
@@ -74,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         mThirdPartySSOController.onActivityResult(requestCode, resultCode, data);
+        mThirdPartySSOGoogleController.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -81,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView idTextView = findViewById(R.id.id_text);
         TextView tokenTextView = findViewById(R.id.token_text);
         TextView emailTextView = findViewById(R.id.email_text);
-        if(userData == null){
+        if (userData == null) {
             idTextView.setText("");
             tokenTextView.setText("");
             emailTextView.setText("");
@@ -92,5 +99,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tokenTextView.setText(userData.getToken());
 
         emailTextView.setText(userData.getEmail());
+
+    }
+
+    @Override
+    public void getGoogleUserData(GoogleUserData googleUserData) {
+        if(googleUserData == null)return;
+        Log.e("TAG","getGoogleUserData = " +googleUserData.getAccessToken());
+        Log.e("TAG","getGoogleUserData = " +googleUserData.getRefreshToken());
     }
 }

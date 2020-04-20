@@ -8,7 +8,7 @@ android {
     properties.load(project.rootProject.file('local.properties').newDataInputStream()) // load local.properties
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -17,6 +17,7 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
 
         resValue ("string","google_login_client_id",properties.getProperty("google_login_client_id"))
+        resValue ("string","google_client_secret",properties.getProperty("google_client_secret"))
     }
 
     buildTypes {
@@ -35,7 +36,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'com.squareup.okhttp:okhttp:2.4.0'
 }
 
 // for upload aar to bintray - Jimi 2020/02/17
@@ -56,7 +59,7 @@ ext {
     // implementation 'com.mobileteam.cloudinteractive:sso-java:0.3.0'
     publishedGroupId = 'com.cloud-interactive.mobileteam'
     artifact = 'sso-google-java'
-    libraryVersion = '0.0.4'
+    libraryVersion = '0.0.9'
 
     // git information (just information)
     libraryDescription = 'third party sso library for mobile team'

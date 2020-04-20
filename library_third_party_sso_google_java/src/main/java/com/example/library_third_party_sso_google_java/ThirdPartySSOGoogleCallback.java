@@ -7,6 +7,6 @@ package com.example.library_third_party_sso_google_java;
 
 public interface ThirdPartySSOGoogleCallback {
 
-    void updateView(UserData userData);
+    void getGoogleUserData(GoogleUserData googleUserData);
 
 }
