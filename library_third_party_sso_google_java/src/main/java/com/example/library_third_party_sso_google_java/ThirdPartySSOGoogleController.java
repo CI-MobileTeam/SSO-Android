@@ -103,6 +103,10 @@ public class ThirdPartySSOGoogleController {
                 mGoogleUserData.setIdToken(account.getIdToken());
                 mGoogleUserData.setEmail(account.getEmail());
 
+                Log.e("TAG", " google client_id =" + mActivity.getString(R.string.google_login_client_id));
+                Log.e("TAG", " google client_secret =" + mActivity.getString(R.string.google_client_secret));
+                Log.e("TAG", " google ServerAuthCode =" + account.getServerAuthCode());
+
                 OkHttpClient okHttpClient = new OkHttpClient();
                 RequestBody requestBody = new FormEncodingBuilder()
                         .add("grant_type", "authorization_code")
