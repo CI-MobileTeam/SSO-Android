@@ -131,8 +131,6 @@ public class ThirdPartySSOGoogleController {
                     public void onResponse(Response response) throws IOException {
                         try {
                             JSONObject jsonObject = new JSONObject(response.body().string());
-                            Log.e("TAG", " onResponse =" + jsonObject.toString());
-
                             mGoogleAuthEntity = new Gson().fromJson(jsonObject.toString(), new TypeToken<GoogleAuthEntity>() {
                             }.getType());
 

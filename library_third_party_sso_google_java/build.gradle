@@ -59,7 +59,7 @@ ext {
     // implementation 'com.mobileteam.cloudinteractive:sso-java:0.3.0'
     publishedGroupId = 'com.cloud-interactive.mobileteam'
     artifact = 'sso-google-java'
-    libraryVersion = '0.1.1'
+    libraryVersion = '0.1.2'
 
     // git information (just information)
     libraryDescription = 'third party sso library for mobile team'
