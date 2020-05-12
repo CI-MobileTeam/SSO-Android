@@ -8,7 +8,7 @@ android {
     properties.load(project.rootProject.file('local.properties').newDataInputStream()) // load local.properties
 
     defaultConfig {
-        minSdkVersion 24
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -59,7 +59,7 @@ ext {
     // implementation 'com.mobileteam.cloudinteractive:sso-java:0.3.0'
     publishedGroupId = 'com.cloud-interactive.mobileteam'
     artifact = 'sso-google-java'
-    libraryVersion = '0.1.2'
+    libraryVersion = '0.2.1'
 
     // git information (just information)
     libraryDescription = 'third party sso library for mobile team'

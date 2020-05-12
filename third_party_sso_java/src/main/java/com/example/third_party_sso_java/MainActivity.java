@@ -10,13 +10,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.library_third_party_sso_google_java.GoogleUserData;
-import com.example.library_third_party_sso_google_java.ThirdPartySSOGoogleCallback;
 import com.example.library_third_party_sso_google_java.ThirdPartySSOGoogleController;
 import com.example.library_third_party_sso_java.ThirdPartySSOCallback;
 import com.example.library_third_party_sso_java.ThirdPartySSOController;
 import com.example.library_third_party_sso_java.UserData;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, ThirdPartySSOCallback , ThirdPartySSOGoogleCallback {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ThirdPartySSOCallback  {
 
     private ThirdPartySSOController mThirdPartySSOController;
     private ThirdPartySSOGoogleController mThirdPartySSOGoogleController;
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mThirdPartySSOController = ThirdPartySSOController.newInstance(this, this);
-        mThirdPartySSOGoogleController = ThirdPartySSOGoogleController.newInstance(this, this);
+//        mThirdPartySSOGoogleController = ThirdPartySSOGoogleController.newInstance(this, this);
         mThirdPartySSOController.getHashKey();
         initView();
         initListener();
@@ -100,12 +99,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         emailTextView.setText(userData.getEmail());
 
-    }
-
-    @Override
-    public void getGoogleUserData(GoogleUserData googleUserData) {
-        if(googleUserData == null)return;
-        Log.e("TAG","getGoogleUserData = " +googleUserData.getAccessToken());
-        Log.e("TAG","getGoogleUserData = " +googleUserData.getRefreshToken());
     }
 }
